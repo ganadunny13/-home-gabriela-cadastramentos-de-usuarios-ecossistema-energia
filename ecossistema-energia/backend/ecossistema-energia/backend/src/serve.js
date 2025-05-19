@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Conexão com MongoDB (altere a URL se estiver usando outro banco)
+// Conexão com MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/ecossistemaEnergia', {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -23,10 +23,12 @@ mongoose.connect('mongodb://127.0.0.1:27017/ecossistemaEnergia', {
 const ajudaRouter = require('./routes/ajuda');
 app.use('/api/ajuda', ajudaRouter);
 
+// Rota padrão
 app.get('/', (req, res) => {
   res.send('API do Ecossistema está no ar!');
 });
 
+// Start do servidor
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
